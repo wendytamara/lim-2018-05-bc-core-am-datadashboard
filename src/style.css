@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+header img {
+  width: 350px;
+}
+
+section .contenedor-login {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  /* height: 100vh; */
+}
+
+section .contenedor-login img {
+  width: 100px;
+  margin: 30px
+}
+
+section .contenedor-login .inputs {
+  margin-top: 20px;
+}
+
+section .contenedor-login button {
+  margin-top: 20px;
+  padding: 5px 40px;
+}
+
+.input {
+  padding: 7px;
+  width: 320px;
+}
