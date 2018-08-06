@@ -4,11 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css"/>
-  <title>Datadashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
 </head>
 <body>
+  <section>
+    <header>
+      <img src="images/logo_laboratoria.png" alt="">
+    </header>
+    <article class="contenedor-login">
+      <img src="images/users-img.png" alt="">
+      <input class="input" type="text" placeholder="usuario">
+      <input class="inputs input" type="text" placeholder="contraseña">
+       <button>LOGIN</button>
+    
+    </article>
+  </section>
 
-  <script src="main.js"></script>  
+  
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCIQ9CdwlDq_P4b73hqXKOmufPft5xlvto",
+      authDomain: "laboratoria-ce921.firebaseapp.com",
+      databaseURL: "https://laboratoria-ce921.firebaseio.com",
+      projectId: "laboratoria-ce921",
+      storageBucket: "laboratoria-ce921.appspot.com",
+      messagingSenderId: "111396322503"
+    };
+    firebase.initializeApp(config);
+  </script>
+    
 </body>
 </html>

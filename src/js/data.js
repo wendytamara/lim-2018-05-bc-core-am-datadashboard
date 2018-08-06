@@ -1,0 +1,1 @@
+console.log('data.js para todas las funciones que vimos que obtienen y manipulan los datos.')
