@@ -14,16 +14,34 @@
     </header>
     <article class="contenedor-login">
       <img src="images/users-img.png" alt="">
-      <input class="input" type="text" placeholder="usuario">
-      <input class="inputs input" type="text" placeholder="contraseña">
-       <button>LOGIN</button>
+      <input id="user" class="input" type="text" placeholder="usuario">
+      <input id="password" class="inputs input" type="text" placeholder="contraseña">
+       <button id="btnlogIn">LOGIN</button>
     
     </article>
   </section>
 
-  
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-  <script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCV7Z_nvaf9lI5lbcm2fzHWdVfJgLB4bbk",
+    authDomain: "datadashboard-1c597.firebaseapp.com",
+    databaseURL: "https://datadashboard-1c597.firebaseio.com",
+    projectId: "datadashboard-1c597",
+    storageBucket: "datadashboard-1c597.appspot.com",
+    messagingSenderId: "854695763670"
+  };
+
+  firebase.initializeApp(config);
+
+</script>
+<script src="js/login.js"></script>
+
+<!--   
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script> -->
+  <!-- <script>
     // Initialize Firebase
     var config = {
       apiKey: "AIzaSyCIQ9CdwlDq_P4b73hqXKOmufPft5xlvto",
@@ -34,7 +52,7 @@
       messagingSenderId: "111396322503"
     };
     firebase.initializeApp(config);
-  </script>
+  </script> -->
     
 </body>
 </html>
