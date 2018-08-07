@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10vh;
+  justify-content: space-between;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.img-ale {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.logo {
+  
+  height: 50px;
+}
+.text-ale {
+  font-family: 'Open Sans', sans-serif;
+ 
+}
+.data-text {
+  font-family: 'Open Sans', sans-serif; 
+}
+main {
+  font-family: 'Open Sans', sans-serif; 
+  font-weight: bold;
+}
+main select {
+  padding: 5px;
+  border-radius: 10%;
+}
