@@ -28,6 +28,7 @@ btnlogIn.addEventListener('click', (event) => {
 function observer() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      console.log('usuario activo');
     } else {
       console.log('no existe usuario activo');
     }
