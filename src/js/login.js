@@ -6,8 +6,6 @@ btnlogIn.addEventListener('click', (event) => {
   firebase.auth().signInWithEmailAndPassword(user.value, password.value)
   .then(() => {
     if(user.value === 'wendy@gmail.com' && password.value === '123456') {
-      
-      console.log(user);
       event.preventDefault();
       location.href = '../views/dashboard.html';
     }
@@ -28,6 +26,7 @@ btnlogIn.addEventListener('click', (event) => {
 function observer() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      console.log('usuario activo');
     } else {
       console.log('no existe usuario activo');
     }
