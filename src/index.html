@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <script src="main.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <section>
+    <header>
+      <img src="images/logo_laboratoria.png" alt="">
+    </header>
+    <article class="contenedor-login">
+      <img src="images/users-img.png" alt="">
+      <input id="user" class="input" type="text" placeholder="usuario">
+      <input id="password" class="inputs input" type="text" placeholder="contraseña">
+       <button id="btnlogIn">LOGIN</button>
+    
+    </article>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCV7Z_nvaf9lI5lbcm2fzHWdVfJgLB4bbk",
+    authDomain: "datadashboard-1c597.firebaseapp.com",
+    databaseURL: "https://datadashboard-1c597.firebaseio.com",
+    projectId: "datadashboard-1c597",
+    storageBucket: "datadashboard-1c597.appspot.com",
+    messagingSenderId: "854695763670"
+  };
+
+  firebase.initializeApp(config);
+
+</script>
+<script src="js/login.js"></script>
+
+<!--   
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script> -->
+  <!-- <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCIQ9CdwlDq_P4b73hqXKOmufPft5xlvto",
+      authDomain: "laboratoria-ce921.firebaseapp.com",
+      databaseURL: "https://laboratoria-ce921.firebaseio.com",
+      projectId: "laboratoria-ce921",
+      storageBucket: "laboratoria-ce921.appspot.com",
+      messagingSenderId: "111396322503"
+    };
+    firebase.initializeApp(config);
+  </script> -->
+    
+</body>
 </html>
