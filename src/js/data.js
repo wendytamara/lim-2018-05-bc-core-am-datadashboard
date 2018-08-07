@@ -1,13 +1,14 @@
 console.log('data.js para todas las funciones que vimos que obtienen y manipulan los datos.')
 // ES EL MODELO  EN MVC // logica del proyecto 
 
+
 // variables a utilizar
 const container = document.getElementById('container');
 const containerEstudents = document.getElementById('containerEstudents');
 let select;
 let optionSelected;
 
-// solicitud para obtener los cohorts del api de laboratoria
+// solicitud para obtener los cohorts del api de laboratori
 function getCohorts() {
   container.innerHTML = ' ';
   const httpRequest = new XMLHttpRequest();
