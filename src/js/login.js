@@ -4,16 +4,15 @@ const btnlogIn = document.getElementById('btnlogIn');
 
 btnlogIn.addEventListener('click', (event) => {  
   firebase.auth().signInWithEmailAndPassword(user.value, password.value)
+  
   .then(() => {
     if(user.value === 'wendy@gmail.com' && password.value === '123456') {
-      
-      console.log(user);
       event.preventDefault();
       location.href = '../views/dashboard.html';
     }
   })
-  .catch((error) => {
-   
+
+  .catch((error) => {   
     console.log(user.value);
     console.log(password.value);
     // Handle Errors here.
