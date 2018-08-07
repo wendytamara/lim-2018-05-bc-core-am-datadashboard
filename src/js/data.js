@@ -4,15 +4,12 @@ const btn = document.getElementById('btn');
 const container = document.getElementById('container');
 
 btn.addEventListener('click', (event) => {
-
-
   event.preventDefault();
   container.innerHTML = ' ';
   getCohorts();
+  
 
 })
-
-
 
 function getCohorts() {
   const httpRequest = new XMLHttpRequest();
@@ -32,6 +29,12 @@ function responseCohorts() {
   console.log(data)
   const select = document.createElement('select');
   container.appendChild(select);
+  select.addEventListener('change', showEstudents)
+
+  function showEstudents() {
+    let optionSelected = select.value;
+    console.log(optionSelected);
+  }
 
   data.forEach(element => {
     let option = document.createElement('option');
