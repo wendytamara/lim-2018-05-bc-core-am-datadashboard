@@ -2,6 +2,10 @@ const user = document.getElementById('user');
 const password = document.getElementById('password');
 const btnlogIn = document.getElementById('btnlogIn');
 
+function init() {
+
+alert('usuario: wendy@gmail.com  password: 123456')
+
 btnlogIn.addEventListener('click', (event) => {  
   firebase.auth().signInWithEmailAndPassword(user.value, password.value)
   
@@ -34,5 +38,7 @@ function observer() {
   });
 }
 observer();
- 
 
+}
+ 
+window.onload = init;
