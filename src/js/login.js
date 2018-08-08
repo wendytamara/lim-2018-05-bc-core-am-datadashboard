@@ -2,7 +2,7 @@ const user = document.getElementById('user');
 const password = document.getElementById('password');
 const btnlogIn = document.getElementById('btnlogIn');
 
-function init() {
+
 
 alert('usuario: wendy@gmail.com  password: 123456');
 
@@ -39,6 +39,5 @@ function observer() {
 }
 observer();
 
-}
+
  
-window.onload = init;
