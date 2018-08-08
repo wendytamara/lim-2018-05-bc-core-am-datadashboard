@@ -11,6 +11,9 @@ let httpRequest;
 let dataCohorts;
 let dataStudents;
 let dataProgress;
+let percentGeneral;
+
+let percentageTotal = document.createElement('p')
 
 
 // solicitud para obtener los cohorts del api de laboratori
@@ -69,6 +72,7 @@ function responseCohorts() {
     dataStudents = JSON.parse(this.responseText);
 
     containerEstudents.innerHTML = '';
+
     dataStudents.forEach(element => {     
       let div = document.createElement("div");   
       let h5 = document.createElement("h5");
@@ -76,7 +80,7 @@ function responseCohorts() {
 
 
       let porcentajes = document.createElement('div');
-      let percentageTotal = document.createElement('p')
+      
       let percentageLectures = document.createElement('p')
       let percentageExercises = document.createElement('p')
       let percentageQuizzes = document.createElement('p')
@@ -85,7 +89,7 @@ function responseCohorts() {
       porcentajes.appendChild(percentageExercises)
       porcentajes.appendChild(percentageQuizzes)
 
-      percentageTotal.textContent = '% Completitud cursos: '/*+element.name*/
+      percentageTotal.textContent =  percentGeneral + '% Completitud cursos: '/*+element.name*/
       percentageLectures.textContent = '% Lecturas completadas: '
       percentageExercises.textContent = '% Ejercicios completados: '
       percentageQuizzes.textContent = '% Quizzes completados: '
@@ -115,32 +119,48 @@ function responseCohorts() {
     })
   }
 
+  
+  var prueba = {
+    stats: { 
+      user: {name: 'Roxana Cardenas', role: 'studiante'},
+      percent: 100,
+      exercises: {total: 9, completed: 0, percent: 40},
+      reads: {total: 4, completed: 9, percent: 78},
+      quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
+    }       
+  };
+
+
+
   function responseProgress() {
     
     dataProgress = JSON.parse(this.responseText);
     console.log(dataProgress);
+    var contador;
+    var totalCoursos;
+  
+
+    debugger
     
-    // for ( let i in dataProgress) {  
-    //   var courses = dataProgress[i];
-    //   var totalCoursos = Object.keys(dataProgress[i]).length;
-    //   var point = 0;
-      // for (j = 0; j < totalCoursos; j++){
-      //   // var porcentaje =  courses.totalUnits;
+    for ( let i in dataProgress) {  
+      var courses = dataProgress[i];
+       totalCoursos = Object.keys(dataProgress[i]).length;
+       contador = 0;
+      var propertiesCourses = Object.keys(dataProgress[i]);
 
-      debugger
+      for (j = 0; j < propertiesCourses.length; j++){
+        // var porcentaje =  courses.propertiesCourses.percent;
+        contador += courses[propertiesCourses[j]].percent;  
 
-      var prueba = {
-        stats: { 
-          user: {name: 'Roxana Cardenas', role: 'studiante'},
-          percent: 100,
-          exercises: {total: 9, completed: 0, percent: 40},
-          reads: {total: 4, completed: 9, percent: 78},
-          quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
-        }       
-      };
-     
+       console.log(contador);   
 
-      // }  
+      } 
+
+      percentGeneral = contador/totalCoursos;
+
+      percentageTotal.textContent = percentGeneral
+
+
       // for (let p = 0; p < usersWitchStats.length; p++) {       
         // const element = array[index];
         // console.log(usersWitchStats[p]);
@@ -148,10 +168,7 @@ function responseCohorts() {
         // console.log(usersWitchStats);
        
       // }
-    // }
-
-
-
+    }
   } 
 }
 
