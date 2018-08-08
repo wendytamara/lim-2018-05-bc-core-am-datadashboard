@@ -146,36 +146,57 @@ function responseCohorts() {
 
     debugger
     
-    for ( let i in dataProgress) {  
+    for ( let i in dataProgress) { 
+
+      // data del progreso del cohort seleccionado
       var courses = dataProgress[i];
+
+      //numero entero de las propiedades del cohort
        totalCoursos = Object.keys(dataProgress[i]).length;
+       
+       //contador porcentaje
        contador = 0;
+
+      // progreso de cada estudiante del cohort en la posicion i
       var propertiesCourses = Object.keys(dataProgress[i]);
-      
+
       reads += totalReads;
+
       readsCompleted += totalCompletedRead;
 
       var totalReads = 0;
       var totalCompletedRead = 0;
 
-      
+      // ingresando a las propiedades del curso con el nombre del curso
 
       for (j = 0; j < propertiesCourses.length; j++){
-        // var porcentaje =  courses.propertiesCourses.percent;
+
+        // obteniendo de cada curso el porcentaje
         contador += courses[propertiesCourses[j]].percent; 
+
+        // obteniendo las unidades de cada curso
         var unidades  = courses[propertiesCourses[j]].units;
 
-        console.log(contador);   
+        console.log(contador);  
+        
+        // bucle que recorre las unidades del curso
       
         for (let h = 0; h < unidades.length; h++) {
           console.log(unidades);
-    
-          const partesUnidad = unidades[h].parts;
-          var propertiesParts = Object.keys(partesUnidad);
-          var readCompleted = partesUnidad[propertiesParts[h]].completed;
-          var unidadesType = partesUnidad[propertiesParts[h]].type;
 
-         
+          //variable que almacena las partes de las unidades  "parts": {
+          // "00-opening": {  "completed": 0, "duration": 15, "type": "read"} 
+
+          const partesUnidad = unidades[h].parts;
+
+      //variable de las propiedades de las partes de cada unidad
+          var propertiesParts = Object.keys(partesUnidad);
+
+          // ingresando a los reads de cada parte de cada unidad //  "completed": 0,
+          var readCompleted = partesUnidad[propertiesParts[h]].completed;
+
+           // ingresando a los reads de cada parte de cada unidad //   "type": "read"
+          var unidadesType = partesUnidad[propertiesParts[h]].type;
 
           if (unidadesType == 'read') {
             totalReads += 1;  
@@ -187,19 +208,12 @@ function responseCohorts() {
           }               
         }
 
-
-
       } 
 
   
 
       percentGeneral = contador/totalCoursos;
       percentageTotal.textContent = percentGeneral;
-
-
-      f
-
- 
 
 
 
