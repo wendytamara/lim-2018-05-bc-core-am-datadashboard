@@ -139,6 +139,10 @@ function responseCohorts() {
     var contador;
     var totalCoursos;
   
+    
+    var reads = 0;
+    var readsCompleted = 0; 
+    
 
     debugger
     
@@ -147,18 +151,56 @@ function responseCohorts() {
        totalCoursos = Object.keys(dataProgress[i]).length;
        contador = 0;
       var propertiesCourses = Object.keys(dataProgress[i]);
+      
+      reads += totalReads;
+      readsCompleted += totalCompletedRead;
+
+      var totalReads = 0;
+      var totalCompletedRead = 0;
+
+      
 
       for (j = 0; j < propertiesCourses.length; j++){
         // var porcentaje =  courses.propertiesCourses.percent;
-        contador += courses[propertiesCourses[j]].percent;  
+        contador += courses[propertiesCourses[j]].percent; 
+        var unidades  = courses[propertiesCourses[j]].units;
 
-       console.log(contador);   
+        console.log(contador);   
+      
+        for (let h = 0; h < unidades.length; h++) {
+          console.log(unidades);
+    
+          const partesUnidad = unidades[h].parts;
+          var propertiesParts = Object.keys(partesUnidad);
+          var readCompleted = partesUnidad[propertiesParts[h]].completed;
+          var unidadesType = partesUnidad[propertiesParts[h]].type;
+
+         
+
+          if (unidadesType == 'read') {
+            totalReads += 1;  
+          }
+          
+          if(readCompleted == 1) {
+            totalCompletedRead += 1;
+
+          }               
+        }
+
+
 
       } 
 
-      percentGeneral = contador/totalCoursos;
+  
 
-      percentageTotal.textContent = percentGeneral
+      percentGeneral = contador/totalCoursos;
+      percentageTotal.textContent = percentGeneral;
+
+
+      f
+
+ 
+
 
 
       // for (let p = 0; p < usersWitchStats.length; p++) {       
