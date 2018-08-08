@@ -8,6 +8,7 @@ header {
   width: 100%;
   height: 10vh;
   justify-content: space-between;
+  background-color: #333333;
 }
 .header-left {
   display: flex;
@@ -21,23 +22,56 @@ header {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-right: 10%;
 }
 .logo {
-  
-  height: 50px;
+  width: 200px;
+  padding-left: 20%;
 }
 .text-ale {
   font-family: 'Open Sans', sans-serif;
- 
+  color: white; 
 }
 .data-text {
   font-family: 'Open Sans', sans-serif; 
+  color: white;
+  
 }
 main {
   font-family: 'Open Sans', sans-serif; 
   font-weight: bold;
 }
+main {
+  background-color: #56F89A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1% 1%;
+}
 main select {
-  padding: 5px;
-  border-radius: 10%;
+  width: 300px;
+  padding: 2%;
+  margin: 2%;
+}
+main input {
+  width: 300px;
+  padding: 2%;
+  margin: 2%;
+}
+
+.each-student {
+  border: 3px solid #FF009E;
+  border-radius: 10px;
+  background-color: white;
+  margin: 1%;
+  padding: 2%;
+  width: 220px;
+  height: 200px;
+}
+#containerEstudents {
+  background-color: #EAE4E4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: 'Open Sans', sans-serif;
 }
