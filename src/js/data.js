@@ -166,9 +166,11 @@ function responseCohorts() {
 
       var totalReads = 0;
       var totalCompletedRead = 0;
+      var totalQuiz = 0;
+      var quizCompleted = 0;
+
 
       // ingresando a las propiedades del curso con el nombre del curso
-
       for (j = 0; j < propertiesCourses.length; j++){
 
         // obteniendo de cada curso el porcentaje
@@ -188,6 +190,7 @@ function responseCohorts() {
           // "00-opening": {  "completed": 0, "duration": 15, "type": "read"} 
 
           const partesUnidad = unidades[h].parts;
+         
 
       //variable de las propiedades de las partes de cada unidad
           var propertiesParts = Object.keys(partesUnidad);
@@ -198,14 +201,26 @@ function responseCohorts() {
            // ingresando a los reads de cada parte de cada unidad //   "type": "read"
           var unidadesType = partesUnidad[propertiesParts[h]].type;
 
+          // var unidadesQuiz = partesUnidad[propertiesParts[h]].quiz;
+          // var unitQuizCompleted = partesUnidad[propertiesParts[h]].quiz;
+
           if (unidadesType == 'read') {
             totalReads += 1;  
+            if(readCompleted  == 1) {
+              totalCompletedRead += 1;
+
+            }
           }
           
-          if(readCompleted == 1) {
-            totalCompletedRead += 1;
-
-          }               
+          if(unidadesType == 'quiz') {
+            totalQuiz += 1; 
+            if(readCompleted == 1) {
+              quizCompleted += 1
+ 
+            }
+          
+          } 
+                                    
         }
 
       } 
@@ -214,7 +229,6 @@ function responseCohorts() {
 
       percentGeneral = contador/totalCoursos;
       percentageTotal.textContent = percentGeneral;
-
 
 
       // for (let p = 0; p < usersWitchStats.length; p++) {       
