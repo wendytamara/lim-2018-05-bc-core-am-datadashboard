@@ -27,9 +27,11 @@ function handleError() {
 function responseCohorts() { 
   const data = JSON.parse(this.responseText);
   console.log(data)
+
   // select = document.createElement('select');
   select = document.getElementById('first-select')
   // container.appendChild(select);
+
   select.addEventListener('change', showEstudents)
 
   // recorriendo los datos del json y creando el select dinamicamente
@@ -63,6 +65,7 @@ function responseCohorts() {
       let h5 = document.createElement("h5");
       let p = document.createElement('p');
 
+
       let porcentajes = document.createElement('div');
       let percentageTotal = document.createElement('p')
       let percentageLectures = document.createElement('p')
@@ -84,8 +87,12 @@ function responseCohorts() {
       h5.textContent = element.name;
       p.textContent = element.role;
       div.appendChild(h5);
+
       div.appendChild(p);   
       div.appendChild(porcentajes)      
+
+      div.appendChild(p);     
+
     })
   }
 }
