@@ -201,8 +201,7 @@ function responseCohorts() {
            // ingresando a los reads de cada parte de cada unidad //   "type": "read"
           var unidadesType = partesUnidad[propertiesParts[h]].type;
 
-          // var unidadesQuiz = partesUnidad[propertiesParts[h]].quiz;
-          // var unitQuizCompleted = partesUnidad[propertiesParts[h]].quiz;
+      
 
           if (unidadesType == 'read') {
             totalReads += 1;  
@@ -231,13 +230,7 @@ function responseCohorts() {
       percentageTotal.textContent = percentGeneral;
 
 
-      // for (let p = 0; p < usersWitchStats.length; p++) {       
-        // const element = array[index];
-        // console.log(usersWitchStats[p]);
-        // usersWitchStats[p] += ({hola: 'hello'});
-        // console.log(usersWitchStats);
-       
-      // }
+
     }
   } 
 }
