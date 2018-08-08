@@ -8,7 +8,7 @@ btnlogIn.addEventListener('click', (event) => {
   .then(() => {
     if(user.value === 'wendy@gmail.com' && password.value === '123456') {
       event.preventDefault();
-      location.href = '../src/views/dashboard.html';
+      location.href = 'views/dashboard.html';
     }
   })
 
