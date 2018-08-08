@@ -127,27 +127,26 @@ function responseCohorts() {
       // for (j = 0; j < totalCoursos; j++){
       //   // var porcentaje =  courses.totalUnits;
 
-      var arreglo = {};
-     
-      arreglo = ([ 
-        {'stats':
-        {percent: '100%'}},
-        {'exercises':
-        {total: '5', completed: 'asd', percent: '30%'}},
-        {'reads':
-        {total: '8', completed: '7', percent: '100%'}},
-        {'quizes':
-        {total: '7', completed: '8', percent:'10%', scoreSum: '876', scoreAvg: '34'}}
-         ] 
-        );
+      debugger
 
-      // }   
+      var prueba = {
+        stats: { 
+          user: {name: 'Roxana Cardenas', role: 'studiante'},
+          percent: 100,
+          exercises: {total: 9, completed: 0, percent: 40},
+          reads: {total: 4, completed: 9, percent: 78},
+          quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
+        }       
+      };
+     
+
+      // }  
       // for (let p = 0; p < usersWitchStats.length; p++) {       
         // const element = array[index];
         // console.log(usersWitchStats[p]);
         // usersWitchStats[p] += ({hola: 'hello'});
         // console.log(usersWitchStats);
-        
+       
       // }
     // }
 
