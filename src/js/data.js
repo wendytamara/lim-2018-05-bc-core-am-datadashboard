@@ -13,14 +13,14 @@ let dataStudents;
 let dataProgress;
 let percentGeneral;
 
-let percentageTotal = document.createElement('p')
+let percentageTotal = document.createElement('p');
 
 
 // solicitud para obtener los cohorts del api de laboratori
 function getCohorts() {
   container.innerHTML = ' ';
   httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET',`https://laboratoria-la-staging.firebaseapp.com/cohorts/`); 
+  httpRequest.open('GET',`https://api.laboratoria.la/cohorts/`); 
   httpRequest.onload = responseCohorts;
   httpRequest.onerror = handleError;
   httpRequest.send();
@@ -55,13 +55,13 @@ function responseCohorts() {
     optionSelected = select.value;
     console.log(optionSelected);
     const http = new XMLHttpRequest();
-    http.open('GET', `https://laboratoria-la-staging.firebaseapp.com/cohorts/${optionSelected}/users`);
+    http.open('GET', `https://api.laboratoria.la/cohorts/${optionSelected}/users`);
     http.onload = responseEstudents;
     http.onerror = handleError;
     http.send();
 
     const xml = new XMLHttpRequest();
-    xml.open('GET', `https://laboratoria-la-staging.firebaseapp.com/cohorts/${optionSelected}/progress`);
+    xml.open('GET', `https://api.laboratoria.la/cohorts/${optionSelected}/progress`);
     xml.onload = responseProgress;
     xml.onerror = handleError;
     xml.send();
@@ -120,15 +120,15 @@ function responseCohorts() {
   }
 
   
-  var prueba = {
-    stats: { 
-      user: {name: 'Roxana Cardenas', role: 'studiante'},
-      percent: 100,
-      exercises: {total: 9, completed: 0, percent: 40},
-      reads: {total: 4, completed: 9, percent: 78},
-      quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
-    }       
-  };
+  // var prueba = {
+  //   stats: { 
+  //     user: {name: 'Roxana Cardenas', role: 'studiante'},
+  //     percent: 100,
+  //     exercises: {total: 9, completed: 0, percent: 40},
+  //     reads: {total: 4, completed: 9, percent: 78},
+  //     quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
+  //   }       
+  // };
 
 
 
@@ -217,11 +217,9 @@ function responseCohorts() {
               quizCompleted += 1
  
             }
-          
-          } 
-                                    
+         
+          }                                   
         }
-
       } 
 
   
