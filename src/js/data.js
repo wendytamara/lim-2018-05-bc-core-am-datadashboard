@@ -11,13 +11,16 @@ let httpRequest;
 let dataCohorts;
 let dataStudents;
 let dataProgress;
+let percentGeneral;
+
+let percentageTotal = document.createElement('p');
 
 
 // solicitud para obtener los cohorts del api de laboratori
 function getCohorts() {
   container.innerHTML = ' ';
   httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET',`https://laboratoria-la-staging.firebaseapp.com/cohorts/`); 
+  httpRequest.open('GET',`https://api.laboratoria.la/cohorts/`); 
   httpRequest.onload = responseCohorts;
   httpRequest.onerror = handleError;
   httpRequest.send();
@@ -52,13 +55,13 @@ function responseCohorts() {
     optionSelected = select.value;
     console.log(optionSelected);
     const http = new XMLHttpRequest();
-    http.open('GET', `https://laboratoria-la-staging.firebaseapp.com/cohorts/${optionSelected}/users`);
+    http.open('GET', `https://api.laboratoria.la/cohorts/${optionSelected}/users`);
     http.onload = responseEstudents;
     http.onerror = handleError;
     http.send();
 
     const xml = new XMLHttpRequest();
-    xml.open('GET', `https://laboratoria-la-staging.firebaseapp.com/cohorts/${optionSelected}/progress`);
+    xml.open('GET', `https://api.laboratoria.la/cohorts/${optionSelected}/progress`);
     xml.onload = responseProgress;
     xml.onerror = handleError;
     xml.send();
@@ -69,6 +72,7 @@ function responseCohorts() {
     dataStudents = JSON.parse(this.responseText);
 
     containerEstudents.innerHTML = '';
+
     dataStudents.forEach(element => {     
       let div = document.createElement("div");   
       let h5 = document.createElement("h5");
@@ -76,7 +80,7 @@ function responseCohorts() {
 
 
       let porcentajes = document.createElement('div');
-      let percentageTotal = document.createElement('p')
+      
       let percentageLectures = document.createElement('p')
       let percentageExercises = document.createElement('p')
       let percentageQuizzes = document.createElement('p')
@@ -85,7 +89,7 @@ function responseCohorts() {
       porcentajes.appendChild(percentageExercises)
       porcentajes.appendChild(percentageQuizzes)
 
-      percentageTotal.textContent = '% Completitud cursos: '/*+element.name*/
+      percentageTotal.textContent =  percentGeneral + '% Completitud cursos: '/*+element.name*/
       percentageLectures.textContent = '% Lecturas completadas: '
       percentageExercises.textContent = '% Ejercicios completados: '
       percentageQuizzes.textContent = '% Quizzes completados: '
@@ -115,44 +119,117 @@ function responseCohorts() {
     })
   }
 
+  
+  // var prueba = {
+  //   stats: { 
+  //     user: {name: 'Roxana Cardenas', role: 'studiante'},
+  //     percent: 100,
+  //     exercises: {total: 9, completed: 0, percent: 40},
+  //     reads: {total: 4, completed: 9, percent: 78},
+  //     quizes: {total: 78, completed: 67, percent: 78, scoreSum: 89, scoreAvg: 56 }
+  //   }       
+  // };
+
+
+
   function responseProgress() {
     
     dataProgress = JSON.parse(this.responseText);
     console.log(dataProgress);
+    var contador;
+    var totalCoursos;
+  
     
-    // for ( let i in dataProgress) {  
-    //   var courses = dataProgress[i];
-    //   var totalCoursos = Object.keys(dataProgress[i]).length;
-    //   var point = 0;
-      // for (j = 0; j < totalCoursos; j++){
-      //   // var porcentaje =  courses.totalUnits;
+    var reads = 0;
+    var readsCompleted = 0; 
+    
 
-      var arreglo = {};
-     
-      arreglo = ([ 
-        {'stats':
-        {percent: '100%'}},
-        {'exercises':
-        {total: '5', completed: 'asd', percent: '30%'}},
-        {'reads':
-        {total: '8', completed: '7', percent: '100%'}},
-        {'quizes':
-        {total: '7', completed: '8', percent:'10%', scoreSum: '876', scoreAvg: '34'}}
-         ] 
-        );
+    debugger
+    
+    for ( let i in dataProgress) { 
 
-      // }   
-      // for (let p = 0; p < usersWitchStats.length; p++) {       
-        // const element = array[index];
-        // console.log(usersWitchStats[p]);
-        // usersWitchStats[p] += ({hola: 'hello'});
-        // console.log(usersWitchStats);
+      // data del progreso del cohort seleccionado
+      var courses = dataProgress[i];
+
+      //numero entero de las propiedades del cohort
+       totalCoursos = Object.keys(dataProgress[i]).length;
+       
+       //contador porcentaje
+       contador = 0;
+
+      // progreso de cada estudiante del cohort en la posicion i
+      var propertiesCourses = Object.keys(dataProgress[i]);
+
+      reads += totalReads;
+
+      readsCompleted += totalCompletedRead;
+
+      var totalReads = 0;
+      var totalCompletedRead = 0;
+      var totalQuiz = 0;
+      var quizCompleted = 0;
+
+
+      // ingresando a las propiedades del curso con el nombre del curso
+      for (j = 0; j < propertiesCourses.length; j++){
+
+        // obteniendo de cada curso el porcentaje
+        contador += courses[propertiesCourses[j]].percent; 
+
+        // obteniendo las unidades de cada curso
+        var unidades  = courses[propertiesCourses[j]].units;
+
+        console.log(contador);  
         
-      // }
-    // }
+        // bucle que recorre las unidades del curso
+      
+        for (let h = 0; h < unidades.length; h++) {
+          console.log(unidades);
+
+          //variable que almacena las partes de las unidades  "parts": {
+          // "00-opening": {  "completed": 0, "duration": 15, "type": "read"} 
+
+          const partesUnidad = unidades[h].parts;
+         
+
+      //variable de las propiedades de las partes de cada unidad
+          var propertiesParts = Object.keys(partesUnidad);
+
+          // ingresando a los reads de cada parte de cada unidad //  "completed": 0,
+          var readCompleted = partesUnidad[propertiesParts[h]].completed;
+
+           // ingresando a los reads de cada parte de cada unidad //   "type": "read"
+          var unidadesType = partesUnidad[propertiesParts[h]].type;
+
+      
+
+          if (unidadesType == 'read') {
+            totalReads += 1;  
+            if(readCompleted  == 1) {
+              totalCompletedRead += 1;
+
+            }
+          }
+          
+          if(unidadesType == 'quiz') {
+            totalQuiz += 1; 
+            if(readCompleted == 1) {
+              quizCompleted += 1
+ 
+            }
+         
+          }                                   
+        }
+      } 
+
+  
+
+      percentGeneral = contador/totalCoursos;
+      percentageTotal.textContent = percentGeneral;
 
 
 
+    }
   } 
 }
 
